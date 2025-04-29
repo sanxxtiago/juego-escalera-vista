@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import Cube from './components/Cube'
 import Platform from './components/Platform'
@@ -8,12 +7,13 @@ function App() {
   // Set the initial state for the cubes positions
   // The array contains the IDs of the cubes in their initial positions
   // The element (0) represents an empty space
+  
   const [cubesPositions, setCubesPositions] = useState([1, 2, 3, 4, 5, 0, 6, 7, 8, 9, 10])
 
-  const teamAColor = 'red'
-  const teamBColor = 'blue'
-  const defaultVibrationIntensity = 0
-  const defaultIluminationFrequency = 0
+  const teamAColor = '#ff0000'
+  const teamBColor = '#0000FF'
+  const defaultVibrationIntensity = 0.2
+  const defaultIluminationFrequency = 0.2
 
 
   //function to render the cubes
@@ -28,7 +28,7 @@ function App() {
               <Cube
                 key={index}
                 id={cubeId}
-                color={'gray'}
+                color={"#808080"}
                 vibrationIntensity={defaultVibrationIntensity}
                 iluminationFrequency={defaultIluminationFrequency}
               />
@@ -75,15 +75,7 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <h1>Juego de Cubos</h1>
       <button onClick={handleClick}>Cambiar cubos</button >
       <div className="card">
         {renderCubes()}
