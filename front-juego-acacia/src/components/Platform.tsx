@@ -1,4 +1,10 @@
+import { useState } from 'react';
+import PlatformConfigPopup from "./PlatformConfigPopup";
+
 function Platform() {
+
+    const [currentSoundId, setCurrentSoundId] = useState(1); // Initialize soundId state
+
     return (
         <div
             style={{
@@ -8,7 +14,11 @@ function Platform() {
                 display: 'flex', // Use flexbox to align items
                 backgroundColor: 'gray', // Set the background color to gray
             }}>
-
+            <PlatformConfigPopup currentSoundId={1}
+                onSave={({ soundId }) => {
+                    setCurrentSoundId(soundId);
+                    console.log(currentSoundId)
+                }}></PlatformConfigPopup>
         </div>
     );
 }

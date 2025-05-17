@@ -29,11 +29,14 @@ function CubeConfigPopup({ id, color, vibrationIntensity, iluminationFrequency, 
   const [tempIntensity, setTempIntensity] = useState(vibrationIntensity)
   const [tempFrequency, setTempFrequency] = useState(iluminationFrequency)
 
-  useEffect(() => {
+useEffect(() => {
+  if (open) {
     setTempColor(color)
     setTempIntensity(vibrationIntensity)
     setTempFrequency(iluminationFrequency)
-  }, [color, vibrationIntensity, iluminationFrequency])
+  }
+}, [open, color, vibrationIntensity, iluminationFrequency])
+
 
   const handleSave = () => {
     onSave?.({
