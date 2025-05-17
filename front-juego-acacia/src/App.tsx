@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { FP1 } from './core/agents/actions/fp1'
 
 import './App.css'
 import Cube from './components/Cube'
@@ -6,8 +7,8 @@ import Platform from './components/Platform'
 function App() {
   // Set the initial state for the cubes positions
   // The array contains the IDs of the cubes in their initial positions
-  const teamAColor = '#ff0000'
-  const teamBColor = '#0000ff'
+  const teamBColor = '#ff0000'
+  const teamAColor = '#0000ff'
   const emptySpaceColor = '#808080'
   const defaultVibrationIntensity = 0.3
   const defaultIluminationFrequency = 0.3
@@ -29,8 +30,6 @@ function App() {
 
   const [cubes, setCubes] = useState([...originalCubes])
   const [cubesPositions, setCubesPositions] = useState([1, 2, 3, 4, 5, 0, 6, 7, 8, 9, 10])
-
-
 
   //function to render the cubes
   function renderCubes() {
@@ -56,10 +55,6 @@ function App() {
     )
   }
 
-  // useEffect(() => {
-  //   renderCubes()
-  // }, [renderCubes])
-
   // Function to handle the click event on the button
   function handleClick() {
     // Update the cubesPositions state with a new array of cube IDs
@@ -79,9 +74,7 @@ function App() {
 
     // Shuffle the newPositions array randomly
     // This will change the order of the cubes in the grid
-
-
-
+    FP1()
     setCubes(shuffled)
     setCubesPositions(shuffled.map(cube => cube.id))
     renderCubes()

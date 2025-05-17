@@ -1,11 +1,15 @@
-//Funcion Pausar 1
-/*
-Acción del bloque: un bloque en posición adyacente emite una vibración suave y se ilumina en un tono 
-calmado, por ejemplo, azul claro
-*/
-
-function FP1() {
+import { Graph } from '../../utils/graph/graph';
 
 
+export function FP1() {
+
+    const g = new Graph();
+
+    const sources = [0, 0, 1, 2];
+    const targets = [1, 2, 3, 3];
+
+    g.crearDesdeListas(sources, targets);
+    g.imprimir();
 
 }
+
