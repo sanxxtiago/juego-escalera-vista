@@ -1,7 +1,4 @@
-//Import useState
-import { useState, useEffect } from 'react';
 import CubeConfigPopup from './CubeConfigPopup';
-import { CircleDashed } from 'lucide-react';
 
 function Cube({
     id,

@@ -42,6 +42,7 @@ export class Graph {
 
   // Accede al grafo para futuros algoritmos
   getListaAdyacencia(): Map<number, number[]> {
+    console.log('Lista de adyacencia:', this.adjacencyList);
     return this.adjacencyList;
   }
 }

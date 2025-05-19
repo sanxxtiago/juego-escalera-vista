@@ -56,7 +56,7 @@ function App() {
   }
 
   // Function to handle the click event on the button
-  function handleClick() {
+  async function handleClick() {
     // Update the cubesPositions state with a new array of cube IDs
     // This is just an example, you can implement your own logic to change the positions
     const resetCubes = cubes.map(cube => {
@@ -74,7 +74,7 @@ function App() {
 
     // Shuffle the newPositions array randomly
     // This will change the order of the cubes in the grid
-    FP1()
+    await FP1()
     setCubes(shuffled)
     setCubesPositions(shuffled.map(cube => cube.id))
     renderCubes()
@@ -82,7 +82,7 @@ function App() {
 
   return (
     <>
-      <h1>Juego de Cubos</h1>
+      <h1>Juego Escalera Inteligente</h1>
       <button onClick={handleClick}>Cambiar cubos</button >
       <div className="card">
         {renderCubes()}
