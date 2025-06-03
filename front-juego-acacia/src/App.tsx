@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react'
-import { FP1 } from './core/agents/actions/fp1'
 import sound1 from './assets/sounds/loop.mp3';
 
 import './App.css'
@@ -152,8 +151,6 @@ function App() {
 
     // Shuffle the newPositions array randomly
     // This will change the order of the cubes in the grid
-    const cube = await FP1()
-    console.log('Cube:', cube)
     stopAudio(); // 🛑 Detener el audio aquí
     // Actualizar estado
     setCubes(newCubes);
