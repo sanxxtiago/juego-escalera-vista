@@ -1,48 +1,34 @@
 export class Graph {
-  private adjacencyList: Map<number, number[]>;
+  private vertexToEdges: Record<number, Record<number, number>> = {};
 
-  constructor() {
-    this.adjacencyList = new Map();
+  get vertices(): number[] {
+    return Object.keys(this.vertexToEdges).map((vertex) => JSON.parse(vertex));
   }
 
-  // Agrega un vértice si no existe
-  addVertice(v: number): void {
-    if (!this.adjacencyList.has(v)) {
-      this.adjacencyList.set(v, []);
+  addVertex(vertex: number): void {
+
+    if (!this.vertexToEdges[vertex]) {
+      this.vertexToEdges[vertex] = {};
     }
   }
 
-  // Agrega una arista (dirigida) entre dos vértices
-  addArista(source: number, target: number): void {
-    this.addVertice(source);
-    this.addVertice(target);
-    this.adjacencyList.get(source)!.push(target);
+  addEdge(source: number, target: number, distance: number): void {
 
-    // Si quieres grafo no dirigido, agrega también:
-    // this.adjacencyList.get(target)!.push(source);
+    if (!this.vertexToEdges[source]) this.vertexToEdges[source] = {};
+    if (!this.vertexToEdges[target]) this.vertexToEdges[target] = {};
+
+    this.vertexToEdges[source][target] = distance;
+    this.vertexToEdges[target][source] = distance;
   }
 
-  // Crea el grafo desde listas paralelas de nodos
-  crearDesdeListas(sourceList: number[], targetList: number[]): void {
-    if (sourceList.length !== targetList.length) {
-      throw new Error('Las listas source y target deben tener la misma longitud');
-    }
+  distance(source: number, target: number): number {
 
-    for (let i = 0; i < sourceList.length; i++) {
-      this.addArista(sourceList[i], targetList[i]);
-    }
+    return this.vertexToEdges[source][target];
   }
 
-  // Muestra el grafo (solo para debug)
-  imprimir(): void {
-    for (const [vertice, vecinos] of this.adjacencyList.entries()) {
-      console.log(`${vertice} -> ${vecinos.join(', ')}`);
-    }
-  }
-
-  // Accede al grafo para futuros algoritmos
-  getListaAdyacencia(): Map<number, number[]> {
-    console.log('Lista de adyacencia:', this.adjacencyList);
-    return this.adjacencyList;
+  neighbors(vertex: number): number[] {
+    return Object.keys(this.vertexToEdges[vertex]).map((neighbor) =>
+      JSON.parse(neighbor)
+    );
   }
 }
